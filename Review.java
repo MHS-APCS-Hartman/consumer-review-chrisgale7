@@ -164,5 +164,56 @@ public class Review {
     } else {
       return randomNegativeAdj();
     }
+    
+    public static double totalSentiment(String fileName)
+    {
+      double total = 0;
+      String word = "";
+      String reviewText = textToString(fileName);
+      
+      for (int i = 0; i < reviewtext.length(); i++)
+      {
+        if (reviewText.substring(i, i+1).equals("") || i + 1 == reviewText.length())
+        {
+          total += sentimentVal(removePunctuation(word));
+          word = "";
+        }
+        else
+        {
+          word += reviewText.substring(i, i+1);
+        }
+        
+    public static int starRating(String fileName)
+    {
+    double total = totalSentiment(fileName);
+    int rating;
+    
+    if (total <= -3.0)
+    {
+      rating = 1;
+    }
+    
+    else if (total <= 0)
+    {
+      rating = 2;
+    }
+    
+    else if (total <= 3.0)
+    {
+      rating = 3;
+    }
+    
+    else if (total <= 6.0)
+    {
+      rating = 4;
+    }
+    
+    else
+    {
+      rating = 5;
+    }
+    
+    return rating;
+    }
   }
 }
