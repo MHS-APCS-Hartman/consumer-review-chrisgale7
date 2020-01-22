@@ -215,5 +215,37 @@ public class Review {
     
     return rating;
     }
+        
+    public static String fakeReview(String fileName)
+    {
+      int start = 0;
+      int end = 0;
+      String adj = "";
+      String adj2 = "";
+      String reviewText = textToString(fileName);
+      
+      while reviewtext.indexOf(".")
+      {
+        start = reviewText.indexOf(".");
+        
+        for(int j = start; j < reviewText.length(); j++)
+        {
+          if (reviewText.substring(j, j+1).equals(""))
+          {
+            end = j;
+            break;
+          }
+          
+          else
+          {
+            end = reviewText.length();
+          }
+          
+          adj = reviewText.substring(start, end);
+          adj2 = randomAdjective();
+          reviewtext = reviewText.replace(adj, adj2);
+          }
+          return reviewText;
+        }
   }
 }
