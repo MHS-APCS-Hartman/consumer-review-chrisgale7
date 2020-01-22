@@ -247,5 +247,20 @@ public class Review {
           }
           return reviewText;
         }
+      
+      public static string fakeReviewStronger(String fileName)
+      {
+       adj = ""; 
+        
+        if (sentimentVal <= )
+        {
+          adj = randomPositiveAdj();
+        }
+        
+        else
+        {
+          adj = randomNegativeAdj();
+        }
+      }
   }
 }
