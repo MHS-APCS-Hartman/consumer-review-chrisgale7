@@ -248,19 +248,60 @@ public class Review {
           return reviewText;
         }
       
-      public static string fakeReviewStronger(String fileName)
+  public static String fakeReviewStronger(String fileName)
+  {
+   String toBeTested = textToString(fileName);
+   String adjective = "";
+   String newAdjective = "";
+   String placeholder = "";
+   boolean asteriskDetected = false;
+   
+   for (int i = 0; i < toBeTested.length(); i++)
+   {
+      if (toBeTested.substring(i, i+1).equals("*"))
       {
-       adj = ""; 
+         asteriskDetected = true;
+      }
+      
+      else if (toBeTested.substring(i, i+1).equals(" ") && asteriskDetected)
+      {
+         adjective = removePunctuation(adjective);
         
-        if (sentimentVal <= )
-        {
-          adj = randomPositiveAdj();
-        }
-        
-        else
-        {
-          adj = randomNegativeAdj();
-        }
+         while (true)
+         {
+            newAdjective = randomAdjective();
+            if ( (sentimentVal(adjective) > 0) && (sentimentVal(newAdjective) > sentimentVal(adjective)) )
+            {
+               break;
+            }
+            else if ( (sentimentVal(adjective) < 0) && (sentimentVal(newAdjective) < sentimentVal(adjective)) )
+            {
+               break;
+            }
+            else if (sentimentVal(adjective) == 0)
+            {
+               break;
+            }
+         }
+         
+         placeholder += newAdjective + " ";
+         asteriskDetected = false;
+         adjective = "";
+      }
+      
+      else if (asteriskDetected == true)
+      {
+         adjective += toBeTested.substring(i, i+1);
+      }
+      
+      else if (asteriskDetected == false)
+      {
+         placeholder += toBeTested.substring(i, i+1);
+      }
+   }
+   return placeholder;
+  }
+}
       }
   }
 }
