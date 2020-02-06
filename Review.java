@@ -182,6 +182,7 @@ public class Review {
         {
           word += reviewText.substring(i, i+1);
         }
+      }
         
     public static int starRating(String fileName)
     {
